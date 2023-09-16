@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerGeneral = styled.footer`
+export const ContainerGeneral = styled.div`
  
 `
 
