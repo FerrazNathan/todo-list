@@ -6,9 +6,8 @@ import { ITask } from '../../interfaces/Tasks'
 
 import * as S from './styles'
 
-const Form = ({ textButton, taskList, setTaskList }: FormProps) => {
+const Form = ({ textButton, taskList, setTaskList, titleSection }: FormProps) => {
 
-  // const [id, setId] = useState<number>(0)
   const [title, setTitle] = useState<string>('')
   const [difficulty, setDifficulty] = useState<number>(0)
 
@@ -22,8 +21,6 @@ const Form = ({ textButton, taskList, setTaskList }: FormProps) => {
     setTaskList!([...taskList, newTask])
     setTitle('')
     setDifficulty(0)
-
-    console.log(taskList, 'taskList <==')
   }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +30,7 @@ const Form = ({ textButton, taskList, setTaskList }: FormProps) => {
 
   return (
     <S.ContainerGeneral>
-      <h2>O que você vai fazer?</h2>
+      <h2>{titleSection}</h2>
       <S.Form onSubmit={addTaskHandler}>
         <S.ContentInputLabel>
           <label htmlFor="title">Título:</label>
