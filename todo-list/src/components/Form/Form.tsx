@@ -6,7 +6,7 @@ import { ITask } from '../../interfaces/Tasks'
 
 import * as S from './styles'
 
-const Form = ({ textButton, taskList, setTaskList, titleSection }: FormProps) => {
+const Form = ({ textButton, taskList, setTaskList, titleSection, closeModal }: FormProps) => {
 
   const [title, setTitle] = useState<string>('')
   const [difficulty, setDifficulty] = useState<number>(0)
@@ -52,7 +52,16 @@ const Form = ({ textButton, taskList, setTaskList, titleSection }: FormProps) =>
             value={difficulty} 
           />
         </S.ContentInputLabel>
-        <input type="submit" className='submit' value={textButton} />
+        <input 
+          type="submit" 
+          className='submit' 
+          value={textButton} 
+          onClick={() => {
+            if (textButton === 'Editar Tarefa') {
+              closeModal!();
+            }
+          }}
+        />
       </S.Form>
     </S.ContainerGeneral>
   )

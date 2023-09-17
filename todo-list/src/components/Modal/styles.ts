@@ -41,3 +41,16 @@ export const ContainerModal = styled.div`
     width: 400px;
   }
 `
+
+export const ButtonClose = styled.button`
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  & p {
+    font-size: 0.75rem;
+  }
+`

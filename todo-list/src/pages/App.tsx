@@ -24,7 +24,17 @@ function App() {
   return (
     <div>
       { isModalOpen && 
-        <Modal children={<Form textButton='Editar Tarefa' taskList={tasks} setTaskList={setTasks}/>} closeModal={closeModal} />    
+        <Modal 
+          children={
+            <Form 
+              textButton='Editar Tarefa' 
+              taskList={tasks} 
+              setTaskList={setTasks} 
+              closeModal={closeModal} 
+            />
+          } 
+          closeModal={closeModal} 
+        />    
       }
      <Header />
      <main>
