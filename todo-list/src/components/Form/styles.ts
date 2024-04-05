@@ -1,14 +1,21 @@
 import styled from "styled-components";
 
 export const ContainerGeneral = styled.div`
- 
+  margin-top: 2rem;
+
+  & h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  } 
 `
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: 500px;
   margin: 0 auto;  
+  padding: 0 1rem;
 
   & input {
     border-radius: 0.5rem;

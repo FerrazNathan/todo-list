@@ -1,15 +1,17 @@
+import React from 'react'
 import { ListProps } from './types'
+
 import * as S from './styles'
 
-const List = ({taskList, setTaskList, openModal}: ListProps) => {
+const List = ({taskList, setTaskList, handleEditTask}: ListProps) => {
 
   function handleDeleteTask(id: number) {
     setTaskList!(taskList.filter(task => task.id !== id))
   }
   
   return (
-    <>
-      {taskList.length > 0 ? (
+    <React.Fragment>
+      {taskList.length > 0 && (
         taskList.map((task) => {
           return (
             <S.ContainerGeneral key={task.id}>
@@ -19,19 +21,14 @@ const List = ({taskList, setTaskList, openModal}: ListProps) => {
               </S.ContainerTitleDifficullty>
 
               <S.ContainerIcons>
-                <i className='bi bi-pencil' onClick={openModal}></i>
-                <i className='bi bi-trash' onClick={() => {handleDeleteTask(task.id)}}></i>
+                <i className='bi bi-pencil' onClick={() => handleEditTask(task)}></i>
+                <i className='bi bi-trash' onClick={() => handleDeleteTask(task.id)}></i>
               </S.ContainerIcons>
             </S.ContainerGeneral>
           )
         })
-      ) : (
-        <S.ContainerDefault>
-          <h2>Não há tarefas a serem exibidas!</h2>
-        </S.ContainerDefault>
-      )
-      }
-    </>
+      )}
+    </React.Fragment>
   )
 }
 

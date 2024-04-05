@@ -8,7 +8,8 @@ const Modal = ({children, closeModal}: ModalProps) => {
     <S.ContainerGeneral>
       <S.ContainerBackground onClick={closeModal}></S.ContainerBackground>
       <S.ContainerModal>
-        <h2>Editar Tarefas</h2>
+        <S.ButtonClose onClick={closeModal}>Fechar X</S.ButtonClose>
+        <h2>Editar Tarefa</h2>
         {children}
       </S.ContainerModal>
     </S.ContainerGeneral>

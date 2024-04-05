@@ -1,32 +1,53 @@
-import { useState, ChangeEvent, FormEvent } from 'react'
+import { useState, ChangeEvent, FormEvent, useEffect } from 'react'
 
 import { FormProps } from './types'
 import { ITask } from '../../interfaces/Tasks'
 
-
 import * as S from './styles'
 
-const Form = ({ textButton, taskList, setTaskList, titleSection }: FormProps) => {
+const Form = ({ 
+  textButton, 
+  taskList, 
+  setTaskList, 
+  titleSection, 
+  closeModal, 
+  task, 
+  handleUpdate,
+}: FormProps) => {
 
+  const [id, setId] = useState<number>(0)
   const [title, setTitle] = useState<string>('')
   const [difficulty, setDifficulty] = useState<number>(0)
 
   const addTaskHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const id = Math.floor(Math.random() * 1000) // Criação de um id aleatório ou randômico
+    if(handleUpdate){
 
-    const newTask: ITask = {id, title, difficulty}
+      handleUpdate(id, title, difficulty)
+    } else {
+      const id = Math.floor(Math.random() * 1000) // Criação de um id aleatório ou randômico
 
-    setTaskList!([...taskList, newTask])
-    setTitle('')
-    setDifficulty(0)
+      const newTask: ITask = {id, title, difficulty}
+
+      setTaskList!([...taskList, newTask])
+      setTitle('')
+      setDifficulty(0)
+    }
   }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if(event.target.name === 'title') setTitle(event.target.value)
     if(event.target.name === 'difficulty') setDifficulty(Number(event.target.value))
   }
+
+  useEffect(() => {
+    if(task) {
+      setId(task.id)
+      setTitle(task.title)
+      setDifficulty(Number(task.difficulty))
+    }
+  }, [task])
 
   return (
     <S.ContainerGeneral>
@@ -52,7 +73,17 @@ const Form = ({ textButton, taskList, setTaskList, titleSection }: FormProps) =>
             value={difficulty} 
           />
         </S.ContentInputLabel>
-        <input type="submit" className='submit' value={textButton} />
+        <input 
+          type="submit" 
+          className='submit' 
+          value={textButton} 
+          onClick={() => {
+            if (textButton === 'Editar Tarefa') {
+              handleUpdate!(id, title, difficulty);
+              closeModal!();
+            }
+          }}
+        />
       </S.Form>
     </S.ContainerGeneral>
   )

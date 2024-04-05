@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const ContainerGeneral = styled.div`
+  width: 100%;
   max-width: 500px;
-  margin: 1rem auto;
+  margin: 2rem auto;
   border-bottom: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 1rem;
 
   & :last-child {
     border-bottom: none;
