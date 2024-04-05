@@ -22,7 +22,7 @@ function App() {
   };
 
   return (
-    <div>
+    <React.Fragment>
       { isModalOpen && 
         <Modal children={<Form textButton='Editar Tarefa' taskList={tasks} setTaskList={setTasks}/>} closeModal={closeModal} />    
       }
@@ -37,7 +37,7 @@ function App() {
       <List taskList={tasks} setTaskList={setTasks} openModal={openModal} />
      </main>
      <Footer />
-    </div>
+    </React.Fragment>
   )
 }
 
