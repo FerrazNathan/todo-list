@@ -19,12 +19,12 @@ git clone https://github.com/FerrazNathan/todo-list.git
 cd todo-list /
 cd todo-list
 
-4. Instale as dependências:
+3. Instale as dependências:
 npm install
 ou
 yarn
 
-5. Execute o aplicativo:
+4. Execute o aplicativo:
 npm run dev
 ou
 yarn dev
